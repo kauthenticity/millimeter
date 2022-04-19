@@ -1,99 +1,131 @@
-import React from 'react'
-import styled from 'styled-components'
-import { FiInstagram } from "react-icons/fi"
-import { SiNaver } from 'react-icons/si';
-import './Footer.css'
+import React from "react";
+import styled from "styled-components";
+import { FiInstagram } from "react-icons/fi";
+import { SiNaver } from "react-icons/si";
+import { Link } from "react-router-dom";
+import "./Footer.css";
+
 const Footer = () => {
+  const onClickIg = () => {
+    window.open("https://www.instagram.com/wearweather/");
+  };
+  const onClickBlog = () => {
+    window.open("https://blog.naver.com/wearweather");
+  };
   return (
     <FooterContainer>
-      <InfoContainer>
-        <LeftContainer>
+      <LeftContainer>
+        <FlexWrapper>
           <FlexItem>Company. Wear Weather</FlexItem>
-          <FlexItem>Owner. Kim InJae</FlexItem>
-        </LeftContainer>
+          <FlexItem2>Owner. Kim InJae</FlexItem2>
+        </FlexWrapper>
 
-        <LeftContainer>
+        <FlexWrapper>
           <FlexItem>Tel. 010-4818-9723</FlexItem>
           <FlexItem2>E-Mail. wearweather@naver.com</FlexItem2>
-        </LeftContainer>
+        </FlexWrapper>
 
-        <LeftContainer>
-          <FlexItem>Business License. 737-23-00533</FlexItem>
-          <FlexItem2>
-            Mail-Order License. 제2018-Daegu Dong-gu-0259 [사업자정보확인]
-          </FlexItem2>
-        </LeftContainer>
-
-        <LeftContainer>
+        <FlexWrapper>
           <FlexItem2>
             Address. 41185 대구광역시 동구 아양로41길 23 (신암동) 2층
           </FlexItem2>
-        </LeftContainer>
-      </InfoContainer>
+        </FlexWrapper>
+      </LeftContainer>
 
-      <ContactContainer>
-        <RightContainer>
-          <ContactItem>
+      <MiddleContainer>
+        <Account>Bank Account. NH 351-1990-0723-13 (김인재)</Account>
+        <Customercenter>Customer Center. 010-4818-9723</Customercenter>
+        <div style={{ fontSize: "0.5rem" }}>
+          Mon-Fri AM 10:00 ~ PM 04:00 &nbsp; Lunch Time PM 12:00 ~ PM 01:00
+          <br />
+          Sat.Sun.Holiday Closed
+        </div>
+      </MiddleContainer>
+
+      <RightContainer>
+        <A to="/guide">
+          <FlexItem3>Guide</FlexItem3>
+        </A>
+
+        <A to="/privacypolicy">
+          <FlexItem3>Privacy Policy</FlexItem3>
+        </A>
+
+        <A to="/agreetment">
+          <FlexItem3>Agreetment</FlexItem3>
+        </A>
+
+        <IconWrapper>
+          <FlexItem4 onClick={onClickIg}>
             <FiInstagram className="menu-icon" />
-            Instagram
-          </ContactItem>
-          <ContactItem>
+          </FlexItem4>
+          <FlexItem4 onClick={onClickBlog}>
             <SiNaver className="menu-icon" />
-            Blog
-          </ContactItem>
-        </RightContainer>
-        <RightContainer>
-          <ContactItem>Guide</ContactItem>
-          <ContactItem>Privacy Policy</ContactItem>
-          <ContactItem>Agreetment</ContactItem>
-        </RightContainer>
-      </ContactContainer>
+          </FlexItem4>
+        </IconWrapper>
+      </RightContainer>
     </FooterContainer>
   );
-}
+};
 
-export default Footer
-
+export default Footer;
+const A = styled(Link)`
+  text-decoration: none;
+  color: #121212;
+`;
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+const FlexItem4 = styled.div`
+  width: 2vw;
+  text-align: right;
+  margin-top: 10px;
+  justify-self: right;
+  cursor: pointer;
+`;
+const FlexItem3 = styled.div`
+  text-align: right;
+`;
 const RightContainer = styled.div`
   display: flex;
-  font-size: 12px;
-  margin-bottom: 5px;
-  justify-content : flex-end; 
-`;
-const ContactItem = styled.div`
+  flex-direction: column;
   margin-right: 3vw;
-  
 `;
-const ContactContainer = styled.div`
-  position : absolute;
-  bottom : 0;
-  right : 0;
+const MiddleContainer = styled.div`
+  font-size: 0.7rem;
+  /* align-self: flex-end; */
+  margin-bottom: 5px;
 `;
-const InfoContainer = styled.div`
 
-`
+const Account = styled.div`
+  margin-bottom: 5px;
+`;
+const Customercenter = styled.div``;
+
+const LeftContainer = styled.div`
+  margin-left: 3vw;
+`;
 const FlexItem = styled.div`
-  margin-left : 3vw;
-  margin-right : 1vw;
-  width : 12vw;
+  margin-right: 2vw;
+  width: 10vw;
 `;
 const FlexItem2 = styled.div`
-  margin-left: 3vw;
   margin-right: 1vw;
 `;
-const LeftContainer = styled.div`
-  display : flex;
-  font-size : 12px;
-  margin-bottom : 5px;
-
-`
+const FlexWrapper = styled.div`
+  display: flex;
+  margin-bottom: 5px;
+  /* justify-content: flex-end; */
+`;
 const FooterContainer = styled.div`
-  width : 100vw;
-  max-width : 100%;
-  min-height : 5vh;
-  color : #121212;
-  display : flex;
-  justify-content : space-between;
-  position : absolute;
-  bottom : 1vh; 
-`
+  width: 100vw;
+  max-width: 100%;
+  min-height: 5vh;
+  color: #121212;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 2vh;
+  font-size: 0.7rem;
+`;
