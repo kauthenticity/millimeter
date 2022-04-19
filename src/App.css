@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+.App {
+  font-family: 'Lora', serif;
+
+  display : relative;
+} 
+@font-face {
+  font-family: 'Lora', serif;
+  src: url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600&display=swap') format("woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans KR', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap') format("woff");
+  font-style: normal;
+  unicode-range : U+AC00-D7A3;
+}
+/* @font-face {
+  font-family : 'Noto Sans KR', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap') format("woff");
+  unicode-range : U+AC00-D7A3;
+  font-style: normal;
+} */

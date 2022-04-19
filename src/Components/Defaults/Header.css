@@ -1,0 +1,14 @@
+.menu-icon{
+  vertical-align: middle;
+}
+
+.search-icon{
+  position : absolute;
+  margin-top : 4px;
+  cursor : pointer;
+}
+
+.search-text:focus{
+  outline : none;
+}
+
