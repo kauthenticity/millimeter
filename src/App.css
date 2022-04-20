@@ -2,8 +2,11 @@
 
 .App {
   font-family: 'Lora', serif;
-  display : relative;
+  display : flex;
   color : #121212;
+  flex-direction: column;
+  min-height : 100vh;
+  justify-content: space-between;
 } 
 @font-face {
   font-family: 'Lora', serif;

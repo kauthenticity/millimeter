@@ -125,7 +125,6 @@ const FooterContainer = styled.div`
   color: #121212;
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  bottom: 2vh;
+  padding : 3vh 0;
   font-size: 0.7rem;
 `;

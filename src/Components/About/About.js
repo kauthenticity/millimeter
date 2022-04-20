@@ -109,4 +109,5 @@ const TitleContainer = styled.div`
 const DescriptionContainer = styled.div`
   margin-top: 7vh;
   padding-left: 2vw;
+  height : ;
 `;

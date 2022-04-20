@@ -85,7 +85,7 @@ const MenuItem = styled.li`
 const MenuWrapper = styled.ul`
   position: fixed;
   list-style-type: none;
-  /* padding-inline-start : 5rem; */
+  padding-inline-start : 5rem;
   padding-top: 3rem;
   line-height: 1.5rem;
   font-size: 0.9rem;
@@ -93,6 +93,6 @@ const MenuWrapper = styled.ul`
 
 const SideBarContainer = styled.div`
   width : 15vw;
-  min-width: 200px;
+  min-width: 250px;
   height: 80vh;
 `;

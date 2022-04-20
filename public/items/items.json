@@ -1,0 +1,50 @@
+[
+  {
+    "id" : 1,
+    "src" : "/Image/IMG_2810.jpg",
+    "name" : "us black denim",
+    "category" : "bottom",
+    "subcategory" : "denim",
+    "price" : 65000
+  },
+  {
+    "id" : 2,
+    "src" : "/Image/IMG_2828.jpg",
+    "name" : "poem knit",
+    "category" : "top",
+    "subcategory" : "knit",
+    "price" : 54000
+  },
+  {
+    "id" : 3,
+    "src" : "/Image/IMG_6454.jpg",
+    "name" : "boun HM jacket",
+    "category" : "outer",
+    "subcategory" : "jacket",
+    "price" : 139000
+  },
+  {
+    "id" : 4,
+    "src" : "/Image/IMG_6477.jpg",
+    "name" : "paul slakcs",
+    "category" : "bottom",
+    "subcategory" : "pants",
+    "price" : 82000
+  },
+  {
+    "id" : 5,
+    "src" : "/Image/IMG_7230.jpg",
+    "name" : "charcol slip ops",
+    "category" : "dress",
+    "subcategory" : "",
+    "price" : 89000
+  },
+  {
+    "id" : 6,
+    "src" : "/Image/IMG_7619.jpg",
+    "name" : "plain T",
+    "category" : "top",
+    "subcategory" : "t-shirt",
+    "price" : 33000
+  }
+]
