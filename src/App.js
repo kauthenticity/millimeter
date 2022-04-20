@@ -6,6 +6,7 @@ import Footer from './Components/Defaults/Footer'
 import Index from './Components/Defaults/Index'
 import About from './Components/About/About'
 import Shop from './Components/Shop/Shop'
+import Login from './Components/Auth/Login'
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/shop/*" element={<Shop />}>
           <Route Path=":cateogry" element={<Shop />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
 
       <Footer />
