@@ -2,8 +2,8 @@
 
 .App {
   font-family: 'Lora', serif;
-
   display : relative;
+  color : #121212;
 } 
 @font-face {
   font-family: 'Lora', serif;
@@ -17,9 +17,9 @@
   font-style: normal;
   unicode-range : U+AC00-D7A3;
 }
-/* @font-face {
-  font-family : 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap') format("woff");
-  unicode-range : U+AC00-D7A3;
-  font-style: normal;
-} */
+
+/* 드래그 했을 때 배경색 및 글자색 지정 */
+::selection {
+		background-color: #121212;
+		color: white;
+	}

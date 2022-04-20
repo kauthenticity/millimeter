@@ -42,9 +42,16 @@ const Header = () => {
       </MenuWrapper>
 
       <AuthWrapper>
-        <A to="/login">
-          <AuthContainer>Login</AuthContainer>
-        </A>
+        <Dropdown className="dropdown">
+          <A to="/login">
+            <AuthContainer>Login</AuthContainer>
+          </A>
+          <DropDownContent className="dropdownContent">
+            <A to="/register">
+              <DropDownItem>Register</DropDownItem>
+            </A>
+          </DropDownContent>
+        </Dropdown>
 
         <Dropdown className="dropdown">
           <A to="/mypage">
@@ -75,7 +82,8 @@ const Header = () => {
 
 export default Header;
 const DropDownItem = styled.div`
-  margin: 0.3rem 0;
+  padding: 0.3rem 0;
+  background-color : rgba(255,255,255,0.3);
 `;
 const DropDownContent = styled.div`
   visibility: hidden;
@@ -85,6 +93,7 @@ const DropDownContent = styled.div`
   z-index: 1;
   font-size: 14px;
   margin-top: 0.5rem;
+  width : calc(100% - 3vw);
 `;
 const Dropdown = styled.div`
   position: relative;
