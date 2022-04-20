@@ -7,6 +7,7 @@ import Index from './Components/Defaults/Index'
 import About from './Components/About/About'
 import Shop from './Components/Shop/Shop'
 import Login from './Components/Auth/Login'
+import Register from './Components/Auth/Register';
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route Path=":cateogry" element={<Shop />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
 
       <Footer />
