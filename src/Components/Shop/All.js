@@ -1,7 +1,7 @@
-import {React, useEffect, useState} from 'react'
-import styled from 'styled-components'
-import axios from 'axios'
-import Pagination from './Pagination'
+import { React, useEffect, useState } from "react";
+import styled from "styled-components";
+import axios from "axios";
+import Pagination from "../Defaults/Pagination";
 
 const All = () => {
   const [items, setItems] = useState([]);
@@ -10,9 +10,14 @@ const All = () => {
   const offset = (page - 1) * limit;
   useEffect(() => {
     /* public 폴더에서 가져옴 */
-    axios.get('/items/items.json').then((res) => {
-      setItems(res.data)
-    })
+    axios.get("/db/items.json").then((res) => {
+      res.data.sort(function (a, b) {
+        if (a["id"] < b["id"]) return 1;
+        if (a["id"] > b["id"]) return -1;
+        return 0;
+      });
+      setItems(res.data);
+    });
   });
 
   return (
@@ -36,36 +41,34 @@ const All = () => {
       />
     </AllContainer>
   );
-}
+};
 
-
-export default All
+export default All;
 const Img = styled.img`
   width: 18vw;
   height: 24vw;
   object-fit: cover;
 `;
-const Title = styled.div`
-`
+const Title = styled.div``;
 const Price = styled.div`
   margin-top: 0.4rem;
   font-size: 0.7rem;
 `;
 
 const Name = styled.div`
-  margin-top : 0.4rem;
-  font-size : 0.8rem;
-`
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+`;
 const ItemContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-basis: 33.333333%;
 `;
 const Item = styled.div`
-  padding : 3rem;
+  padding: 2rem;
 `;
 const AllContainer = styled.div`
-  width : 100%;
-  padding : 1rem 6rem;
-  font-size : 0.9rem;
-`
+  width: 100%;
+  padding: 1rem 6rem;
+  font-size: 0.9rem;
+`;

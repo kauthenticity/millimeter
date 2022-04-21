@@ -1,25 +1,25 @@
-import { React , useState} from 'react'
-import styled from 'styled-components';
-import {Link} from 'react-router-dom'
+import { React, useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [id, setId] = useState('')
-  const [pw, setPw] = useState('')
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
 
   const labelStyle = {
-    top: '-20px',
-    left: '0',
-    fontSize: '0.6rem'
-  }
+    top: "-20px",
+    left: "0",
+    fontSize: "0.6rem",
+  };
 
   const onChangeId = (e) => {
-    setId(e.target.value)
-    console.log(id)
-  }
+    setId(e.target.value);
+    console.log(id);
+  };
 
   const onChangePw = (e) => {
-    setPw(e.target.value)
-  }
+    setPw(e.target.value);
+  };
   return (
     <LoginContainer>
       <Title> LOGIN </Title>
@@ -57,42 +57,42 @@ const Login = () => {
       </EtcContainer>
     </LoginContainer>
   );
-}
+};
 
-export default Login
+export default Login;
 
 const A = styled(Link)`
-  text-decoration : none;
-  color : #121212;
-`
+  text-decoration: none;
+  color: #121212;
+`;
 
 const EtcItem = styled.div`
   font-size: 0.7rem;
   display: inline-block;
-  padding-bottom: 5px;;
+  padding-bottom: 2px;
   &:after {
     display: block;
     content: "";
-    padding-bottom: 5px;;
+    padding-bottom: 2px;
     border-bottom: solid 1px #121212;
     transform: scaleX(0);
-    transition: transform 0.3s linear;
+    transition: transform 0.25s linear;
   }
   &:hover {
     &:after {
-      padding-bottom: 5px;;
+      padding-bottom: 2px;
       transform: scaleX(1);
 
-      transform-origin: 0% 50%;
+      /* transform-origin: 0% 50%; */
     }
   }
 `;
 const EtcContainer = styled.div`
-  width : 70%;
-  margin : auto;
-  display : flex;
-  justify-content : space-between;
-`
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+`;
 const Button = styled.button`
   font-family: "Lora", serif;
   width: 100%;
@@ -102,33 +102,33 @@ const Button = styled.button`
   border: 1px solid #121212;
   padding: 0.6rem 0;
   cursor: pointer;
-  transition : all 0.2s ease-in;
-  &:hover{
-    background : #232323;
-    color : white;
+  transition: all 0.2s ease-in;
+  &:hover {
+    background: #232323;
+    color: white;
   }
 `;
 const RememberContainer = styled.div`
-margin-top : 1rem;
-  display : flex;
-  align-items : center;
-`
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+`;
 const Remember = styled.div`
-  display : inline-block;
-  font-size : 0.7rem;
-  vertical-align : middle;
-`
+  display: inline-block;
+  font-size: 0.7rem;
+  vertical-align: middle;
+`;
 
 const Checkbox = styled.input`
-  margin : 0;
-  display : inline-block;
-  margin-right : 0.5rem;
-`
+  margin: 0;
+  display: inline-block;
+  margin-right: 0.5rem;
+`;
 
 const InputContainer = styled.div`
-  position : relative;
-  margin-top : 1.5rem;
-`
+  position: relative;
+  margin-top: 1.5rem;
+`;
 const Label = styled.label`
   position: absolute;
   top: 0;
@@ -156,12 +156,12 @@ const Input = styled.input`
   }
 `;
 const Title = styled.div`
-text-align : center;
-padding : 1rem 0;
-`
+  text-align: center;
+  padding: 1rem 0;
+`;
 const LoginContainer = styled.div`
-  margin : 0 auto;
-  width : 20vw;
-  height : 60vh;
-  position : relative;
-`
+  margin: 0 auto;
+  width: 20vw;
+  height: 60vh;
+  position: relative;
+`;

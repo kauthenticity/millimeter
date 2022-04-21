@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "index": 1,
+    "title": "첫 게시글입니다",
+    "description": "첫 게시글의 내용을 테스트 해보겠습니다",
+    "writer": "wearweather",
+    "date": "2021-10-01"
+  },
+  {
+    "id": 2,
+    "index": 2,
+    "title": "[필독] 배송 지연 공지",
+    "description": "modney skirt의 원단 수급 문제로 생산에 지연이 되고 있습니다.",
+    "writer": "wearweather",
+    "date": "2022-03-08"
+  },
+  {
+    "id": 3,
+    "index": 3,
+    "title": "적립금 관련 공지",
+    "description": "다음달부터 후기 작성 적립금이 1,000원으로 인상됩니다.",
+    "writer": "wearweather",
+    "date": "2022-04-21"
+  }
+]
