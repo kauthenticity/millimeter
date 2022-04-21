@@ -1,12 +1,11 @@
-import { React, useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { FaStarOfLife } from 'react-icons/fa'
-import {MdClose} from 'react-icons/md'
+import { React, useState, useEffect } from "react";
+import styled from "styled-components";
+import { FaStarOfLife } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
 import DaumPostcode from "react-daum-postcode";
-import Modal from 'react-modal';
-import Agreetment from './Agreetment';
-import './modal.css'
-
+import Modal from "react-modal";
+import Agreetment from "./Agreetment";
+import "./modal.css";
 
 const Register = () => {
   // 회원가입 폼 정보
@@ -25,15 +24,11 @@ const Register = () => {
   // 비밀번호가 일치하는지
   const [pwSame, setPwSame] = useState(false);
 
-  const [postCode, setPostCode] = useState('')
-  const [addr, setAddr] = useState('')
+  const [postCode, setPostCode] = useState("");
+  const [addr, setAddr] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [checks, setChecks] = useState({
-    all: false,
-    ck1: false,
-    ck2: false,
-    ck3: false,
-  })
+  const [allCheck, setAllCheck] = useState(false);
+  const [checks, setChecks] = useState([]);
 
   const iconStyle = {
     color: "#1F99D2",
@@ -41,8 +36,6 @@ const Register = () => {
     position: "absolute",
     marginLeft: "0.2rem",
   };
-
-
 
   // 회원가입 폼 state 바인딩
   const onInfoChange = (e) => {
@@ -58,8 +51,8 @@ const Register = () => {
     setPostCode(data.zonecode);
     setAddr(data.address);
     setInfo({ ...info, postcode: data.zonecode, address1: data.address });
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
   function onOpenZipcode() {
     setIsOpen(true);
@@ -207,14 +200,19 @@ const Register = () => {
         />
       </InputContainer>
 
-      <Agreetment checks={checks} setChecks={setChecks} />
+      <Agreetment
+        checks={checks}
+        setChecks={setChecks}
+        allCheck={allCheck}
+        setAllCheck={setAllCheck}
+      />
 
       <Button>JOIN US</Button>
     </RegisterContainr>
   );
-}
+};
 
-export default Register
+export default Register;
 
 const Phone = styled.input`
   width: 100%;
@@ -248,8 +246,8 @@ const Button = styled.button`
 
   border: 1px solid #121212;
   padding: 0.6rem 0;
-  font-family : 'Lora';
-  
+  font-family: "Lora";
+
   cursor: pointer;
   transition: all 0.2s ease-in;
   &:hover {
@@ -268,7 +266,7 @@ const ButtonAddress = styled.button`
   cursor: pointer;
   font-family: "Noto Sans KR";
   transition: all 0.2s ease-in;
-  outline : none;
+  outline: none;
   &:hover {
     background: #232323;
     color: white;
@@ -276,9 +274,9 @@ const ButtonAddress = styled.button`
 `;
 
 const Label = styled.label`
-  font-size : 0.7rem;
-  font-weight : bold;
-`
+  font-size: 0.7rem;
+  font-weight: bold;
+`;
 const Input = styled.input`
   font-family: "Noto Sans KR";
   width: 100%;
@@ -297,20 +295,20 @@ const Input = styled.input`
 const PhoneContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content : space-between;
+  justify-content: space-between;
 `;
 const InputContainer = styled.div`
-  width : 100%;
-  display : block;
-  margin-bottom : 2rem;
-`
+  width: 100%;
+  display: block;
+  margin-bottom: 2rem;
+`;
 
 const Title = styled.h1`
   padding: 1rem 0;
-  text-align : center;
-  font-size : 1rem;
+  text-align: center;
+  font-size: 1rem;
   /* font-family : 'Lora', serif; */
-  font-weight : normal;
+  font-weight: normal;
 `;
 const RegisterContainr = styled.div`
   margin: 0 auto;

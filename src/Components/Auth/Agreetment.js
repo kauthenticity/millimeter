@@ -1,18 +1,19 @@
-import { React, useEffect, useCallback, useState } from 'react'
-import styled from 'styled-components'
-import Modal from 'react-modal'
+import { React, useEffect, useCallback, useState } from "react";
+import styled from "styled-components";
+import Modal from "react-modal";
 import "./modal.css";
 import { MdClose } from "react-icons/md";
-import { agreetment1, agreetment2, agreetment3} from './agreetments'
+import { agreetment1, agreetment2, agreetment3 } from "./agreetments";
+import { checkboxClasses } from "@mui/material";
 
-const Agreetment = ({checks, setChecks}) => {
+const Agreetment = ({ checks, setChecks, allCheck, setAllCheck }) => {
   const [more1, setMore1] = useState(false);
   const [more2, setMore2] = useState(false);
   const [more3, setMore3] = useState(false);
 
   const onClickMore1 = () => {
-    setMore1(!more1)
-  }
+    setMore1(!more1);
+  };
 
   const onClickMore2 = () => {
     setMore2(!more2);
@@ -22,19 +23,51 @@ const Agreetment = ({checks, setChecks}) => {
     setMore3(!more3);
   };
 
-  const onCkChange = (e) => {
-    setChecks({ ...checks, [e.target.name]: !checks[e.target.name] })
-    console.log(checks)
-  }
-  
+  const onChkAllChange = (checked) => {
+    setAllCheck(!allCheck);
+
+    if (checked) {
+      setChecks([...checks, "ck1", "ck2", "ck3"]);
+    } else if (!checked && checks.length > 0) {
+      setChecks([]);
+    }
+  };
+
+  const onCkChange = (checked, name) => {
+    if (checked) {
+      setChecks([...checks, name]);
+    } else if (!checked && checks.includes(name)) {
+      setChecks(checks.filter((item) => item != name));
+      setAllCheck(false);
+    }
+  };
+
+  useEffect(() => {
+    if (checks.length == 3) {
+      setAllCheck(true);
+    }
+  }, [checks]);
+
   return (
     <>
       <AgreetmentContainer>
-        <CheckboxLeft name="all" onChange={onCkChange} checked={ checks.all}type="checkbox" />
+        <CheckboxLeft
+          name="all"
+          onChange={(e) => onChkAllChange(e.currentTarget.checked)}
+          checked={allCheck}
+          type="checkbox"
+        />
         전체 동의
       </AgreetmentContainer>
       <AgreetmentContainer>
-        <CheckboxLeft name="ck1" onChange={onCkChange} checked={ checks.ck1} type="checkbox" />
+        <CheckboxLeft
+          name="ck1"
+          onChange={(e) =>
+            onCkChange(e.currentTarget.checked, e.currentTarget.name)
+          }
+          checked={checks.includes("ck1")}
+          type="checkbox"
+        />
         [필수] 이용 약관 동의
         <ViewMore onClick={onClickMore1}>
           자세히 보기
@@ -61,7 +94,14 @@ const Agreetment = ({checks, setChecks}) => {
       </AgreetmentContainer>
 
       <AgreetmentContainer>
-        <CheckboxLeft name="ck1" type="checkbox" checked={ checks.ck2}onChange={onCkChange} />
+        <CheckboxLeft
+          name="ck2"
+          type="checkbox"
+          checked={checks.includes("ck2")}
+          onChange={(e) =>
+            onCkChange(e.currentTarget.checked, e.currentTarget.name)
+          }
+        />
         [필수] 개인정보 수집 및 이용 방침{" "}
         <ViewMore onClick={onClickMore2}>
           자세히 보기
@@ -88,7 +128,14 @@ const Agreetment = ({checks, setChecks}) => {
       </AgreetmentContainer>
 
       <AgreetmentContainer>
-        <CheckboxLeft name="ck2" type="checkbox" checked={ checks.ck3} onChange={onCkChange}/>
+        <CheckboxLeft
+          name="ck3"
+          type="checkbox"
+          checked={checks.includes("ck3")}
+          onChange={(e) =>
+            onCkChange(e.currentTarget.checked, e.currentTarget.name)
+          }
+        />
         [선택] 쇼핑정보 수신 동의
         <ViewMore onClick={onClickMore3}>
           자세히 보기
@@ -115,9 +162,9 @@ const Agreetment = ({checks, setChecks}) => {
       </AgreetmentContainer>
     </>
   );
-}
+};
 
-export default Agreetment
+export default Agreetment;
 const Button = styled.button`
   width: 100%;
   border: none;
