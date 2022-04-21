@@ -1,0 +1,36 @@
+.modal{
+  position: absolute;
+  background-color: #fff;
+  border : none;
+  outline : none;
+  padding : 1rem 2rem;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+.modal, .agreetment{
+  top: 12vh;
+  left: 24vw;
+  right: 24vw;
+  bottom: 12vh;
+  font-family : 'Noto Sans KR';
+  font-size : 0.9rem;
+}
+
+.agreetment3{
+  top: 32vh;
+  left: 30vw;
+  right: 30vw;
+  bottom: 32vh;
+  font-family : 'Noto Sans KR';
+  font-size : 0.9rem;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(192,192,192,0.3);
+}

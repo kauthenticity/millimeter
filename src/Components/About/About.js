@@ -86,7 +86,6 @@ const InfoContainer = styled.div`
 const ExternalLinkContainer = styled.div`
   margin-top: 5vh;
 `;
-const ExternalLink = styled.div``;
 const AboutContainer = styled.div`
   display: flex;
   margin-top: 2vh;
@@ -98,7 +97,7 @@ const ImgContainer = styled.div`
   height: 70vh;
 `;
 const Description = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
+  /* font-family: "Noto Sans KR", sans-serif; */
   line-height: 200%;
   font-weight: 400;
 `;

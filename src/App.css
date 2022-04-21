@@ -1,28 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+/* 
 
-.App {
+
+
+@font-face {
+  font-family: 'Noto-Sans KR', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  unicode-range: U+AC00-D7A3;
+}
+
+@font-face {
   font-family: 'Lora', serif;
+  src: url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
+  font-style: normal; 
+}
+*/
+.App {
+  font-family: 'Lora', 'Noto-Sans KR';
   display : flex;
   color : #121212;
   flex-direction: column;
   min-height : 100vh;
   justify-content: space-between;
 } 
-@font-face {
-  font-family: 'Lora', serif;
-  src: url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600&display=swap') format("woff");
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap') format("woff");
-  font-style: normal;
-  unicode-range : U+AC00-D7A3;
-}
-
 /* 드래그 했을 때 배경색 및 글자색 지정 */
 ::selection {
-		background-color: #121212;
-		color: white;
-	}
+	background-color: #121212;
+	color: white;
+}

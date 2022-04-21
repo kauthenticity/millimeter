@@ -1,126 +1,322 @@
-import { React } from 'react'
+import { React, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { agreetment1, agreetment2, agreetment3 } from './agreetments'
+import { FaStarOfLife } from 'react-icons/fa'
+import {MdClose} from 'react-icons/md'
+import DaumPostcode from "react-daum-postcode";
+import Modal from 'react-modal';
+import Agreetment from './Agreetment';
+import './modal.css'
+
 
 const Register = () => {
+  // 회원가입 폼 정보
+  const [info, setInfo] = useState({
+    name: "",
+    id: "",
+    password: "",
+    password2: "",
+    phone1: "",
+    phone2: "",
+    phone3: "",
+    postcode: "",
+    address1: "",
+    address2: "",
+  });
+  // 비밀번호가 일치하는지
+  const [pwSame, setPwSame] = useState(false);
+
+  const [postCode, setPostCode] = useState('')
+  const [addr, setAddr] = useState('')
+  const [isOpen, setIsOpen] = useState(false);
+  const [checks, setChecks] = useState({
+    all: false,
+    ck1: false,
+    ck2: false,
+    ck3: false,
+  })
+
+  const iconStyle = {
+    color: "#1F99D2",
+    fontSize: "0.4rem",
+    position: "absolute",
+    marginLeft: "0.2rem",
+  };
+
+
+
+  // 회원가입 폼 state 바인딩
+  const onInfoChange = (e) => {
+    setInfo({
+      ...info,
+      [e.target.name]: e.target.value,
+    });
+
+    console.log(info);
+  };
+
+  const handleAddressComplete = (data) => {
+    setPostCode(data.zonecode);
+    setAddr(data.address);
+    setInfo({ ...info, postcode: data.zonecode, address1: data.address });
+    setIsOpen(false)
+  }
+
+  function onOpenZipcode() {
+    setIsOpen(true);
+  }
+
+  function onCloseZipcode() {
+    setIsOpen(false);
+  }
+
+  // 비밀번호, 비밀번호 확인이 바뀔 대마다 서로가 같은지 체크함.
+  useEffect(() => {
+    setPwSame(info.password === info.password2);
+  }, [info.password, info.password2]);
+
   return (
     <RegisterContainr>
       <Title>JOIN US</Title>
       <InputContainer>
-        <Label>아이디</Label>
-        <Input></Input>
+        <Label>NAME</Label>
+        <FaStarOfLife style={iconStyle} />
+        <Input
+          type="text"
+          name="name"
+          id="name"
+          onChange={onInfoChange}
+          required
+        ></Input>
       </InputContainer>
 
       <InputContainer>
-        <Label>비밀번호</Label>
-        <Input></Input>
+        <Label>ID</Label>
+        <FaStarOfLife style={iconStyle} />
+        <Input
+          type="text"
+          name="id"
+          id="id"
+          onChange={onInfoChange}
+          required
+        ></Input>
       </InputContainer>
 
       <InputContainer>
-        <Label>비밀번호 확인</Label>
-        <Input></Input>
+        <Label>PASSWORD</Label>
+        <FaStarOfLife style={iconStyle} />
+        <Input
+          type="password"
+          name="password"
+          id="password"
+          onChange={onInfoChange}
+          required
+        ></Input>
       </InputContainer>
 
       <InputContainer>
-        <Label>휴대전화</Label>
-        <Input></Input>
+        <Label>PASSWORD CHECK</Label>
+        <FaStarOfLife style={iconStyle} />
+        <Input
+          type="password"
+          name="password2"
+          id="password2"
+          onChange={onInfoChange}
+          required
+        ></Input>
+        <Helper>{pwSame === true ? "" : "비밀번호가 일치하지 않습니다"}</Helper>
       </InputContainer>
 
       <InputContainer>
-        <Label>이메일</Label>
-        <Input></Input>
+        <Label>PHONE NUMBER</Label>
+        <FaStarOfLife style={iconStyle} />
+        <PhoneContainer>
+          <Select onChange={onInfoChange} name="phone1">
+            <option value="010">010</option>
+            <option value="011">011</option>
+            <option value="016">016</option>
+            <option value="017">017</option>
+            <option value="018">018</option>
+            <option value="019">019</option>
+          </Select>
+          <span style={{ margin: "0 1rem" }}>-</span>
+          <Phone name="phone2" onChange={onInfoChange} />
+          <span
+            name="phone3"
+            onChange={onInfoChange}
+            style={{ margin: "0 1rem" }}
+          >
+            -
+          </span>
+          <Phone />
+        </PhoneContainer>
       </InputContainer>
 
-      <AgreetmentContainer>
-        <P>
-          <Checkbox type="checkbox" />
-          이용약관, 개인정보수집 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.
-        </P>
-        <Agreetment>
-          <AgreetmentTitle>[필수] 이용약관 동의</AgreetmentTitle>
-          <Box>{agreetment1}</Box>
-          <P>
-            이용 약관에 동의하십니까?
-            <Checkbox type="checkbox" />
-          </P>
-        </Agreetment>
+      <InputContainer>
+        <Label required>E-MAIL</Label>
+        <FaStarOfLife style={iconStyle} />
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          onChange={onInfoChange}
+        ></Input>
+      </InputContainer>
 
-        <Agreetment>
-          <AgreetmentTitle>[필수] 개인정보 수집 및 이용 동의</AgreetmentTitle>
-          <Box>{agreetment2}</Box>
-          <P>
-            개인정보 수집 및 이용에 동의하십니까?
-            <Checkbox type="checkbox" />
-          </P>
-        </Agreetment>
+      <InputContainer>
+        <Label>ADDRESS</Label>
+        <PhoneContainer>
+          <Input
+            name="postcode"
+            value={info.postcode}
+            onChange={onInfoChange}
+          ></Input>
+          <ButtonAddress onClick={onOpenZipcode}>주소 찾기</ButtonAddress>
+          {isOpen && (
+            <Modal
+              ariaHideApp={false}
+              isOpen={true}
+              onRequestClose={onCloseZipcode}
+              className="modal address"
+              overlayClassName="overlay address"
+            >
+              <MdClose
+                onClick={onCloseZipcode}
+                style={{
+                  float: "right",
+                  marginBottom: "1rem",
+                  cursor: "pointer",
+                }}
+              />
+              <DaumPostcode
+                style={{ height: "500px" }}
+                onComplete={handleAddressComplete}
+              />
+            </Modal>
+          )}
+        </PhoneContainer>
+        <Input
+          name="address1"
+          onChange={onInfoChange}
+          placeholder="기본 주소"
+          value={info.address1}
+        />
+        <Input
+          name="address2"
+          onChange={onInfoChange}
+          placeholder="상세 주소"
+        />
+      </InputContainer>
 
-        <Agreetment>
-          <AgreetmentTitle>[선택] 쇼핑정보 수신 동의</AgreetmentTitle>
-          <Box>{agreetment3}</Box>
-          <P>
-            SMS 수신을 동의하십니까?
-            <Checkbox type="checkbox" />
-          </P>
-          <P>
-            이메일 수신을 동의하십니까?
-            <Checkbox type="checkbox" />
-          </P>
-        </Agreetment>
-      </AgreetmentContainer>
+      <Agreetment checks={checks} setChecks={setChecks} />
+
+      <Button>JOIN US</Button>
     </RegisterContainr>
   );
 }
 
 export default Register
-const AgreetmentTitle = styled.h3`
-  font-size : 0.8rem;
-`
-const Box = styled.div`
-  height: 100px;
-  overflow-y: scroll;
-  overflow-x : wrap;
-  border: 1px solid #dadada;
-  white-space: pre;
+
+const Phone = styled.input`
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #121212;
+  border: none;
+  border-bottom: 1px solid #121212;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  position: relative;
 `;
-const Agreetment = styled.div`
-`
-const Checkbox = styled.input`
-  margin : 0;
-`
+const Select = styled.select`
+  width: 100%;
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #121212;
+`;
+const Helper = styled.span`
+  font-size: 0.7rem;
+  font-family: "Noto Sans KR";
+  letter-spacing: 1px;
+`;
+const Button = styled.button`
+  width: 100%;
+  border: none;
+  background: transparent;
+  margin: 2rem 0 4rem 0;
 
-const P = styled.div`
-  display : flex;
-  align-items : center;
+  border: 1px solid #121212;
+  padding: 0.6rem 0;
+  font-family : 'Lora';
+  
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  &:hover {
+    background: #232323;
+    color: white;
+  }
 `;
 
-const AgreetmentContainer = styled.div`
+const ButtonAddress = styled.button`
+  width: 100%;
+  border: none;
+  background: transparent;
+  border: 1px solid #121212;
+  padding: 0.6rem 0;
+  margin-left: 2rem;
+  cursor: pointer;
+  font-family: "Noto Sans KR";
+  transition: all 0.2s ease-in;
+  outline : none;
+  &:hover {
+    background: #232323;
+    color: white;
+  }
+`;
 
-`
 const Label = styled.label`
-
+  font-size : 0.7rem;
+  font-weight : bold;
 `
 const Input = styled.input`
-  width : 90%;
-`
+  font-family: "Noto Sans KR";
+  width: 100%;
+  padding: 10px 5px;
+  font-size: 16px;
+  color: #121212;
+  border: none;
+  border-bottom: 1px solid #121212;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  position: relative;
+  box-sizing: border-box;
+`;
+
+const PhoneContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content : space-between;
+`;
 const InputContainer = styled.div`
   width : 100%;
-  display : flex;
-  justify-content : space-between;
-  align-items : center;
+  display : block;
+  margin-bottom : 2rem;
 `
 
 const Title = styled.h1`
   padding: 1rem 0;
   text-align : center;
   font-size : 1rem;
-  font-family : 'lora', serif;
+  /* font-family : 'Lora', serif; */
   font-weight : normal;
 `;
 const RegisterContainr = styled.div`
   margin: 0 auto;
-  width: 60vw;
+  width: 35vw;
   min-height: 80vh;
   position: relative;
-  font-family: "noto-sans", sans-serif;
-  font-size : 0.8rem;
+  /* font-family: "Lora", serif; */
+  font-size: 0.8rem;
 `;
