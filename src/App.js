@@ -7,6 +7,7 @@ import Shop from "./Components/Shop/Shop";
 import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import Notice from "./Components/Community/Notice";
+import Write from './Components/Defaults/Write'
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -21,8 +22,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/notice" element={<Notice />} />
+        <Route path="/write" element={ <Write/>} />
       </Routes>
-
       <Footer />
     </div>
   );

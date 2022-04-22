@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
-import { useSearchParams } from "react-router-dom";
+import {RiPencilFill} from 'react-icons/ri'
+import { useSearchParams, Link } from "react-router-dom";
 import NoticeList from "./NoticeList";
 import NoticeContent from "./NoticeContent";
 
@@ -12,12 +12,20 @@ const Notice = () => {
   return (
     <NoticeContainer>
       <Title>Notice</Title>
-      {no == null ? <NoticeList /> : <NoticeContent />}
+      <Write>
+        <A to="/write?board=notice">
+          <RiPencilFill />
+        </A>
+      </Write>
+      {no == null ? <NoticeList /> : <NoticeContent no={no} />}
     </NoticeContainer>
   );
 };
 export default Notice;
-
+const A = styled(Link)`
+  text-decoration : none;
+  color : #121212;
+`
 const NoticeContainer = styled.div`
   margin: 0 auto;
   width: 70vw;
@@ -25,6 +33,11 @@ const NoticeContainer = styled.div`
   position: relative;
   font-family: "Noto Sans KR";
   font-size: 0.9rem;
+`;
+const Write = styled.div`
+  cursor : pointer;
+  font-family: "Lora";
+  text-align: right;
 `;
 
 const Title = styled.div`

@@ -35,7 +35,7 @@ const Footer = () => {
       <MiddleContainer>
         <Account>Bank Account. NH 351-1990-0723-13 (김인재)</Account>
         <Customercenter>Customer Center. 010-4818-9723</Customercenter>
-        <div style={{ fontSize: "0.5rem" }}>
+        <div style={{ fontSize: "0.6rem" }}>
           Mon-Fri AM 10:00 ~ PM 04:00 &nbsp; Lunch Time PM 12:00 ~ PM 01:00
           <br />
           Sat.Sun.Holiday Closed

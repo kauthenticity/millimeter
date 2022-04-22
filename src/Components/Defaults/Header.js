@@ -24,7 +24,7 @@ const Header = () => {
           <MenuContainer>Shop</MenuContainer>
         </A>
         <Dropdown className="dropdown">
-          <A to="/community">
+          <A to="#">
             <MenuContainer>Community</MenuContainer>
           </A>
           <DropDownContent className="dropdownContent">

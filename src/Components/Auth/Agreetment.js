@@ -43,7 +43,7 @@ const Agreetment = ({ checks, setChecks, allCheck, setAllCheck }) => {
   };
 
   useEffect(() => {
-    if (checks.length == 3) {
+    if (checks.length === 3) {
       setAllCheck(true);
     }
   }, [checks]);

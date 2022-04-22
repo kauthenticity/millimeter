@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { GrPrevious } from 'react-icons/gr'
+import {GrNext} from 'react-icons/gr'
 
 function Pagination({ total, limit, page, setPage }) {
   const numPages = Math.ceil(total / limit);
@@ -7,7 +9,7 @@ function Pagination({ total, limit, page, setPage }) {
     <>
       <Nav>
         <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
-          &lt;
+          <GrPrevious style={{ fontSize: "0.5rem" }} />
         </Button>
         {Array(numPages)
           .fill()
@@ -21,7 +23,7 @@ function Pagination({ total, limit, page, setPage }) {
             </Button>
           ))}
         <Button onClick={() => setPage(page + 1)} disabled={page === numPages}>
-          &gt;
+          <GrNext style={{ fontSize: "0.5rem" }} />
         </Button>
       </Nav>
     </>
