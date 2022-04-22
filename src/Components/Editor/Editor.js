@@ -4,7 +4,6 @@ import RichTextPlugin from "@lexical/react/LexicalRichTextPlugin";
 import ContentEditable from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import AutoFocusPlugin from "@lexical/react/LexicalAutoFocusPlugin";
-import TreeViewPlugin from "./plugins/TreeViewPlugin";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
@@ -14,14 +13,9 @@ import { AutoLinkNode, LinkNode } from "@lexical/link";
 import LinkPlugin from "@lexical/react/LexicalLinkPlugin";
 import ListPlugin from "@lexical/react/LexicalListPlugin";
 import LexicalMarkdownShortcutPlugin from "@lexical/react/LexicalMarkdownShortcutPlugin";
-
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
-
-function Placeholder() {
-  return <div className="editor-placeholder">Enter some rich text...</div>;
-}
 
 const editorConfig = {
   // The editor theme
@@ -54,7 +48,6 @@ export default function Editor() {
         <div className="editor-inner">
           <RichTextPlugin
             contentEditable={<ContentEditable className="editor-input" />}
-            placeholder={<Placeholder />}
           />
           <HistoryPlugin />
           <AutoFocusPlugin />

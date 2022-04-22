@@ -1,5 +1,5 @@
 import "./App.css";
-import "./Components/Defaults/Editor.css";
+import "./Components/Editor/Editor.css";
 import Header from "./Components/Defaults/Header";
 import Footer from "./Components/Defaults/Footer";
 import Index from "./Components/Defaults/Index";
@@ -8,7 +8,7 @@ import Shop from "./Components/Shop/Shop";
 import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import Notice from "./Components/Community/Notice";
-import Write from "./Components/Defaults/Editor";
+import Write from "./Components/Editor/Editor";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
