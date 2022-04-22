@@ -23,11 +23,11 @@ const Header = () => {
         <A to="/shop">
           <MenuContainer>Shop</MenuContainer>
         </A>
-        <Dropdown className="dropdown">
+        <Dropdown className="dropdownHeader">
           <A to="#">
             <MenuContainer>Community</MenuContainer>
           </A>
-          <DropDownContent className="dropdownContent">
+          <DropDownContent className="dropdownHeaderContent">
             <A to="/notice">
               <DropDownItem>Notice</DropDownItem>
             </A>
@@ -42,22 +42,22 @@ const Header = () => {
       </MenuWrapper>
 
       <AuthWrapper>
-        <Dropdown className="dropdown">
+        <Dropdown className="dropdownHeader">
           <A to="/login">
             <AuthContainer>Login</AuthContainer>
           </A>
-          <DropDownContent className="dropdownContent">
+          <DropDownContent className="dropdownHeaderContent">
             <A to="/register">
               <DropDownItem>Register</DropDownItem>
             </A>
           </DropDownContent>
         </Dropdown>
 
-        <Dropdown className="dropdown">
+        <Dropdown className="dropdownHeader">
           <A to="/mypage">
             <AuthContainer>My Page</AuthContainer>
           </A>
-          <DropDownContent className="dropdownContent">
+          <DropDownContent className="dropdownHeaderContent">
             <A to="/login">
               <DropDownItem>Login</DropDownItem>
             </A>
@@ -83,7 +83,7 @@ const Header = () => {
 export default Header;
 const DropDownItem = styled.div`
   padding: 0.3rem 0;
-  background-color : rgba(255,255,255,0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 `;
 const DropDownContent = styled.div`
   visibility: hidden;
@@ -93,7 +93,7 @@ const DropDownContent = styled.div`
   z-index: 1;
   font-size: 14px;
   margin-top: 0.5rem;
-  width : calc(100% - 3vw);
+  width: calc(100% - 3vw);
 `;
 const Dropdown = styled.div`
   position: relative;

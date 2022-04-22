@@ -1,4 +1,5 @@
 import "./App.css";
+import "./Components/Defaults/Editor.css";
 import Header from "./Components/Defaults/Header";
 import Footer from "./Components/Defaults/Footer";
 import Index from "./Components/Defaults/Index";
@@ -7,8 +8,9 @@ import Shop from "./Components/Shop/Shop";
 import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import Notice from "./Components/Community/Notice";
-import Write from './Components/Defaults/Write'
+import Write from "./Components/Defaults/Editor";
 import { Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
@@ -22,7 +24,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/notice" element={<Notice />} />
-        <Route path="/write" element={ <Write/>} />
+        <Route path="/write" element={<Write />} />
       </Routes>
       <Footer />
     </div>

@@ -4,13 +4,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const NoticeContent = ({ no }) => {
-  const [notice, setNotice] = useState({})
+  const [notice, setNotice] = useState({});
   useState(() => {
-    axios.get('/db/notices.json').then((res) => {
-      var temp = res.data.filter((item) => item.no == no)
-      setNotice(temp[0])
-    })
-  }, [])
+    axios.get("/db/notices.json").then((res) => {
+      var temp = res.data.filter((item) => item.no == no);
+      setNotice(temp[0]);
+    });
+  }, []);
   return (
     <NoticeContentContainer>
       <ul>
@@ -31,9 +31,9 @@ const NoticeContent = ({ no }) => {
 };
 export default NoticeContent;
 const A = styled(Link)`
-  text-decoration : none;
-  color : #121212;
-`
+  text-decoration: none;
+  color: #121212;
+`;
 const Button = styled.button`
   border: none;
   background: transparent;
@@ -54,7 +54,7 @@ const DescriptionItem = styled.li`
   box-sizing: border-box;
   min-height: 35vh;
   display: flex;
-  align-items : center;
+  align-items: center;
 `;
 const Date = styled.div`
   width: 15%;
