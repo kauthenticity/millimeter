@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Pagination from "../Defaults/Pagination";
 
-const NoticeList = () => {
+const ReviewList = () => {
   // for pagination
   const [limit, setLimit] = useState(12);
   const [page, setPage] = useState(1);
@@ -14,12 +14,11 @@ const NoticeList = () => {
   // search keyword
   const [keyword, setKeyword] = useState("");
 
-  // notices from db
-  const [dbNotices, setdbNotices] = useState([]);
-  // notices from search result
-  const [searchNotice, setSearchNotice] = useState([]);
-  // notices to show
-  const [notices, setNotices] = useState([]);
+  // reviews from db
+  const [dbReviews, setdbReviews] = useState([]);
+
+  // reviews to show
+  const [reviews, setReviews] = useState([]);
 
   // set search filter
   const onChangeFilter = (e) => {
@@ -34,23 +33,25 @@ const NoticeList = () => {
   // when search button is clicked
   const onClickSearch = (e) => {
     if (keyword === "") {
-      setNotices(dbNotices);
+      setReviews(dbReviews);
       return;
     }
 
     let res = [];
     if (filter === "title") {
-      res = notices.filter((notice) => notice.title.includes(keyword));
+      res = reviews.filter((review) => review.title.includes(keyword));
     } else if (filter === "content") {
-      res = notices.filter((notice) => notice.description.includes(keyword));
+      res = reviews.filter((review) => review.description.includes(keyword));
     } else if (filter === "both") {
-      res = notices.filter(
-        (notice) =>
-          notice.description.includes(keyword) || notice.title.includes(keyword)
+      res = reviews.filter(
+        (review) =>
+          review.description.includes(keyword) || review.title.includes(keyword)
       );
+    } else if (filter === "writer") {
+      res = reviews.filter((review) => review.writer.includes(keyword));
     }
 
-    setNotices(res);
+    setReviews(res);
   };
 
   // triget click event on button when press enter in input
@@ -60,50 +61,46 @@ const NoticeList = () => {
     }
   };
 
-  // retrieve notice data
+  // retrieve review data
   useState(() => {
     axios
-      .get("/db/notices.json")
+      .get("/db/reviews.json")
       .then((res) => {
-        const tempNotices = res.data.sort((a, b) => {
+        const tempReviews = res.data.sort((a, b) => {
           return b.id - a.id;
         });
-        setdbNotices(tempNotices);
-        setNotices(tempNotices);
+
+        tempReviews.forEach((r) => {
+          r.writer2 = r.writer.slice(0, 2) + "**";
+        });
+        setdbReviews(tempReviews);
+        setReviews(tempReviews);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  const noticeExist = notices.map((notice) => (
-    <ItemWrapper key={notice.no}>
-      <A to={"/notice?no=" + notice.no}>
-        <Subject>{notice.title}</Subject>
+  const reviewExist = reviews.map((review) => (
+    <ItemWrapper key={review.no}>
+      <Img src={review.item.src}></Img>
+      <A to={"/review?no=" + review.no}>
+        <Subject>{review.title}</Subject>
       </A>
-      <Writer>{notice.writer}</Writer>
-      <Date>{notice.date}</Date>
+      <Writer>{review.writer2}</Writer>
+      <Date>{review.date}</Date>
     </ItemWrapper>
   ));
 
-  const noticeNotExist = <ItemWrapper>검색 결과가 없습니다</ItemWrapper>;
+  const reviewNotExist = <ItemWrapper>검색 결과가 없습니다</ItemWrapper>;
 
   return (
-    <NoticeListContainer>
+    <ReviewListContainer>
       <ItemContainer>
-        {/* {notices.map((notice) => (
-          <ItemWrapper key={notice.no}>
-            <A to={"/notice?no=" + notice.no}>
-              <Subject>{notice.title}</Subject>
-            </A>
-            <Writer>{notice.writer}</Writer>
-            <Date>{notice.date}</Date>
-          </ItemWrapper>
-        ))} */}
-        {notices.length == 0 ? noticeNotExist : noticeExist}
+        {reviews.length == 0 ? reviewNotExist : reviewExist}
       </ItemContainer>
       <Pagination
-        total={notices.length}
+        total={reviews.length}
         limit={limit}
         page={page}
         setPage={setPage}
@@ -113,6 +110,7 @@ const NoticeList = () => {
           <option value="title">제목</option>
           <option value="content">내용</option>
           <option value="both">제목, 내용</option>
+          <option value="writer">작성자</option>
         </Filter>
         <Input
           onChange={onChangeKeyword}
@@ -121,9 +119,15 @@ const NoticeList = () => {
         />
         <Button onClick={onClickSearch}>search</Button>
       </SearchContainer>
-    </NoticeListContainer>
+    </ReviewListContainer>
   );
 };
+
+const Img = styled.img`
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+`;
 
 const Input = styled.input`
   padding: 0.4rem 0;
@@ -180,13 +184,16 @@ const Writer = styled.div`
 `;
 const Subject = styled.div`
   width: 70%;
+  font-family: "Lora";
+
+  padding-left: 2rem;
 `;
 
 const ItemWrapper = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.5rem;
   border-bottom: 1px solid #565656;
   box-sizing: border-box;
 `;
@@ -200,7 +207,7 @@ const ItemContainer = styled.ul`
   margin-bottom: auto;
 `;
 
-const NoticeListContainer = styled.div`
+const ReviewListContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -208,4 +215,4 @@ const NoticeListContainer = styled.div`
   font-size: 0.9rem;
 `;
 
-export default NoticeList;
+export default ReviewList;

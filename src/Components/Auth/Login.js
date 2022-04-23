@@ -43,6 +43,9 @@ const Login = () => {
       </RememberContainer>
 
       <Button>LOGIN</Button>
+      <Button className="isBottom">
+        <A to="/regiester">JOIN US</A>
+      </Button>
 
       <EtcContainer>
         <EtcItem>
@@ -51,9 +54,9 @@ const Login = () => {
         <EtcItem>
           <A to="#">Forgot Password</A>
         </EtcItem>
-        <EtcItem>
+        {/* <EtcItem>
           <A to="/register">Register</A>
-        </EtcItem>
+        </EtcItem> */}
       </EtcContainer>
     </LoginContainer>
   );
@@ -88,7 +91,7 @@ const EtcItem = styled.div`
   }
 `;
 const EtcContainer = styled.div`
-  width: 70%;
+  width: 50%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -98,7 +101,7 @@ const Button = styled.button`
   width: 100%;
   border: none;
   background: transparent;
-  margin: 2rem 0;
+  margin-top: 2rem;
   border: 1px solid #121212;
   padding: 0.6rem 0;
   cursor: pointer;
@@ -106,6 +109,13 @@ const Button = styled.button`
   &:hover {
     background: #232323;
     color: white;
+
+    ${A} {
+      color: white;
+    }
+  }
+  &.isBottom {
+    margin: 1rem 0 2rem 0;
   }
 `;
 const RememberContainer = styled.div`
@@ -161,7 +171,7 @@ const Title = styled.div`
 `;
 const LoginContainer = styled.div`
   margin: 0 auto;
-  width: 20vw;
+  width: 25vw;
   height: 60vh;
   position: relative;
 `;

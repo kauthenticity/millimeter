@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "no": 1,
+    "title": "review",
+    "description": "재질도 부들부들하고 최고예여...",
+    "writer": "강진실",
+    "date": "2022-04-21",
+    "itemId": 8,
+    "item": {
+      "id": 8,
+      "src": "./images/IMG_vest.jpg",
+      "name": "near knit vest",
+      "category": "top",
+      "subcategory": "knit",
+      "price": 51000
+    }
+  }
+]

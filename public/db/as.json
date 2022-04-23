@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "배송 문의합니다",
+    "description": "원단 수급 문제로 영업일 기준 2~3주 소요될 예정입니다. 감사합니다.",
+    "writer": "wearweather",
+    "questionId": 1
+  },
+  {
+    "id": 2,
+    "title": "사이즈 관련 문의",
+    "description": "저희가 다시 측정해 봤는데 괜찮아요",
+    "writer": "wearweather",
+    "questionId": 2
+  },
+  {
+    "id": 3,
+    "title": "재입고 문의",
+    "description": "문의하신 상품은 재입고 예정이 없습니다. 감사합니다.",
+    "writer": "wearweather",
+    "questionId": 3
+  }
+]

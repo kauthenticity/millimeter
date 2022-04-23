@@ -16,6 +16,8 @@ import LexicalMarkdownShortcutPlugin from "@lexical/react/LexicalMarkdownShortcu
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
+import styled from "styled-components";
+import { useSearchParams } from "react-router-dom";
 
 const editorConfig = {
   // The editor theme
@@ -40,25 +42,64 @@ const editorConfig = {
   ],
 };
 
-export default function Editor() {
+const Editor = () => {
+  const [searchParams] = useSearchParams();
+  const board = searchParams.get("board");
+
+  const onClickWrite = () => {};
+
   return (
-    <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
-        <ToolbarPlugin />
-        <div className="editor-inner">
-          <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
-          />
-          <HistoryPlugin />
-          <AutoFocusPlugin />
-          <CodeHighlightPlugin />
-          <ListPlugin />
-          <LinkPlugin />
-          <AutoLinkPlugin />
-          <ListMaxIndentLevelPlugin maxDepth={7} />
-          <LexicalMarkdownShortcutPlugin />
+    <EditorContainer>
+      <Title placeholder="제목" />
+      <LexicalComposer initialConfig={editorConfig}>
+        <div className="editor-container">
+          <ToolbarPlugin />
+          <div className="editor-inner">
+            <RichTextPlugin
+              contentEditable={<ContentEditable className="editor-input" />}
+            />
+            <HistoryPlugin />
+            <AutoFocusPlugin />
+            <CodeHighlightPlugin />
+            <ListPlugin />
+            <LinkPlugin />
+            <AutoLinkPlugin />
+            <ListMaxIndentLevelPlugin maxDepth={7} />
+            <LexicalMarkdownShortcutPlugin />
+          </div>
         </div>
-      </div>
-    </LexicalComposer>
+      </LexicalComposer>
+      <Button onClick={onClickWrite}>write</Button>
+    </EditorContainer>
   );
-}
+};
+
+export default Editor;
+
+const EditorContainer = styled.div`
+  width: 70vw;
+  margin: 0 15vw;
+`;
+const Title = styled.input`
+  width: 100%;
+  outline: none;
+  border: 1px solid #acacac;
+  border-radius: 4px;
+  padding: 0.6rem;
+  box-sizing: border-box;
+`;
+
+const Button = styled.button`
+  float: right;
+  border: none;
+  background: transparent;
+  border: 1px solid #121212;
+  padding: 0.8rem 2.8rem;
+  font-family: "Lora";
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  &:hover {
+    background: #232323;
+    color: white;
+  }
+`;

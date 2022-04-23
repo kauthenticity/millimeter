@@ -9,6 +9,8 @@ import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import Notice from "./Components/Community/Notice";
 import Write from "./Components/Editor/Editor";
+import QnA from "./Components/Community/QnA";
+import Review from "./Components/Community/Review";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/qna" element={<QnA />} />
+        <Route path="/review" element={<Review />} />
       </Routes>
       <Footer />
     </div>
