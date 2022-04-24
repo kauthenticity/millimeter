@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const MyPageMenu = ({ userId }) => {
           <LiMenu>ORDER</LiMenu>
         </A>
 
-        <A to="/mypage/myaccount">
+        <A to="/mypage/myaccount/check">
           <LiMenu>MY ACCOUNT</LiMenu>
         </A>
 

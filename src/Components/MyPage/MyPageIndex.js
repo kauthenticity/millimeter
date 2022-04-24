@@ -41,7 +41,7 @@ const MyPageIndex = () => {
   return (
     <MyPageContainer>
       <Title>
-        <H3>My Page</H3>
+        <H1>My Page</H1>
         {/* <p>
           {user.name}님의 회원 등급은 [{user.level}]입니다.
         </p> */}
@@ -54,8 +54,8 @@ const MyPageIndex = () => {
 
 export default MyPageIndex;
 
-const H3 = styled.h3`
-  font-size: 0.9rem;
+const H1 = styled.h1`
+  font-size: 1rem;
   font-weight: normal;
 `;
 

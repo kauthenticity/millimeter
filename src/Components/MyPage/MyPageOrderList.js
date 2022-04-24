@@ -105,5 +105,6 @@ const OrderInfo = styled.div`
 
 const H3 = styled.h3`
   font-weight: 500;
+  font-size: 1rem;
   text-align: center;
 `;

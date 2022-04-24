@@ -3,6 +3,7 @@ import "./Components/Editor/Editor.css";
 import Header from "./Components/Defaults/Header";
 import Footer from "./Components/Defaults/Footer";
 import Index from "./Components/Defaults/Index";
+import NotFound from "./Components/Defaults/NotFound";
 import About from "./Components/About/About";
 import Shop from "./Components/Shop/Shop";
 import Login from "./Components/Auth/Login";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/qna" element={<QnA />} />
         <Route path="/review" element={<Review />} />
         <Route path="/mypage/*" element={<MyPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
