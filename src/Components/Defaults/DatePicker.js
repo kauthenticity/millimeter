@@ -31,15 +31,15 @@ const MyDatePicker = ({ startDate, setStartDate, endDate, setEndDate, dateRange}
         break;
       }
       case 2: {
-        before = new window.Date(before.setMonth(today.getMonth() - 1));
+        before = new window.Date(today.getFullYear(), today.getMonth()-1, today.getDate());
         break;
       }
       case 3: {
-        before = new window.Date(before.setMonth(today.getMonth() - 3));
+        before = new window.Date(today.getFullYear(), today.getMonth()-3, today.getDate());
         break;
       }
       case 4: {
-        before = new window.Date(before.setMonth(today.getMonth() - 6));
+        before = new window.Date(today.getFullYear(), today.getMonth()-6, today.getDate());
         break;
       }
       default: {
