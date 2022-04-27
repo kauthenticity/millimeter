@@ -1,14 +1,22 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import DatePicker from '../Defaults/DatePicker'
 
+const today = new window.Date();
+var before = new window.Date();
+before = new window.Date(before.setMonth(today.getMonth() - 3)); 
 
 const Order = () => {
   const userid = 'wlstlf7345'
+
   const [dateRange, setDateRange] = useState(3)
   const [dbOrders, setDbOrders] = useState([])
   const [orders, setOrders] = useState([]);
   const [status, setStatus] = useState(0)
+  const [startDate, setStartDate] = useState(before)
+  const [endDate, setEndDate] = useState(today);
+
   useEffect(() => {
     axios.get('/db/orders.json').then((res) => {
       const temp = res.data.filter((item) => item.id === userid);
@@ -67,7 +75,9 @@ const Order = () => {
               </Li>
             </Ul>
           </DateList>
-          <DatePickerContent></DatePickerContent>
+          <DatePickerContent>
+            <DatePicker startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} dateRange={dateRange} />
+          </DatePickerContent>
         </Date>
       </Content>
     </OrderContainer>
@@ -95,11 +105,15 @@ const Ul = styled.ul`
   color : #7a7a7a;
   cursor : pointer;
 `;
-const DatePickerContent = styled.div``
+const DatePickerContent = styled.div`
+  width : 100%;
+  text-align : right;
+`
 const DateList = styled.div``
 const Date = styled.div`
   display : flex;
   justify-content : space-between;
+  align-items : center;
 `
 
 const Content = styled.div`
