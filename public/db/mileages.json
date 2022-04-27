@@ -1,0 +1,12 @@
+[
+  {
+    "_id" : 1,
+    "userid" : "wlstlf7345",
+    "available" : 2500,
+    "used" : 6300,
+    "pending" : 1250,
+    "refund" : 0,
+    "savedlist" : [],
+    "usedlist" : []
+  }
+]
