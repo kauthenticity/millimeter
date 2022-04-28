@@ -27,7 +27,7 @@ const MyPageIndex = () => {
     // retrieve order data from db
     axios.get("/db/orders.json").then((res) => {
       // find user orderes
-      const userOrders = res.data.filter((item) => item.userId == userId);
+      const userOrders = res.data.filter((item) => item.userid == userId);
 
       // push each order in order status array
       userOrders.forEach((userOrder) => {
