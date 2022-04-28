@@ -64,7 +64,7 @@ const Order = () => {
   const tbody = orders.map((order) => {
     return (
       <>
-        <Tr>
+        <Tr key={ order._id}>
           <Td rowSpan={order.items.length} className="number">
             {order.number}
           </Td>
@@ -87,7 +87,7 @@ const Order = () => {
           </Td>
         </Tr>
         {order.items.slice(1).map((item) => (
-          <Tr>
+          <Tr key={ item.id}>
             <Td className="info">
               <div style={{ display: "flex" }}>
                 <ItemImg src={item.src} />

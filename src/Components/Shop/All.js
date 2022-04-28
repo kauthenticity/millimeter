@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import Pagination from "../Defaults/Pagination";
+import {HiHeart, HiOutlineHeart} from 'react-icons/hi'
 
 const All = () => {
   const [items, setItems] = useState([]);
