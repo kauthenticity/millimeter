@@ -12,7 +12,12 @@ const Header = () => {
     <HeaderContainer>
       <LogoContainer>
         <Link to="/">
-          <img src={Logo} className="logo" alt="logo" />
+          <img
+            src={Logo}
+            className="logo"
+            alt="logo"
+            style={{ width: "150px", height: "25px" }}
+          />
         </Link>
       </LogoContainer>
 
